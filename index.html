@@ -43,25 +43,45 @@
 
       // romanToInt("III");
 
-      function longestCommonPrefix(strs) {
-        let temp = [];
-        for (let i = 0; i < strs.length; i++) {
-          for (let j = 1; j < strs[i].length + 1; j++) {
-            let tempstr = strs[i].slice(0, j);
-            console.log("tempstr---", tempstr);
-            let temArr = strs.filter((item) => item.slice(0, j).indexOf(tempstr) !== -1);
-            if (temArr.length === strs.length) {
-              temp.push(tempstr);
-            }
-            // console.log("temp--", temp);
-          }
-        }
+      // function longestCommonPrefix(strs) {
+      //   let temp = [];
+      //   for (let i = 0; i < strs.length; i++) {
+      //     for (let j = 1; j < strs[i].length + 1; j++) {
+      //       let tempstr = strs[i].slice(0, j);
+      //       console.log("tempstr---", tempstr);
+      //       let temArr = strs.filter((item) => item.slice(0, j).indexOf(tempstr) !== -1);
+      //       if (temArr.length === strs.length) {
+      //         temp.push(tempstr);
+      //       }
+      //       // console.log("temp--", temp);
+      //     }
+      //   }
 
-        temp.sort();
-        console.log("temp", temp);
-        return temp[temp.length - 1] ? temp.pop() : "";
+      //   temp.sort();
+      //   console.log("temp", temp);
+      //   return temp[temp.length - 1] ? temp.pop() : "";
+      // }
+      // console.log(longestCommonPrefix(["reflower", "flow", "flight"]));
+
+      function isValid(s) {
+        const reverseMap = {
+          "{": "}",
+          "(": ")",
+          "[": "]",
+        };
+        let strArr = s.split("");
+        let res = true;
+        let temp = ~~(strArr.length / 2);
+        for (let i = 0; i < temp; i++) {
+          console.log(reverseMap[strArr[i]], strArr[strArr.length - 1 - i]);
+          res=reverseMap[strArr[i]] === strArr[strArr.length - 1 - i]
+            ? res && true
+            : res && false;
+        }
+        return res;
       }
-      console.log(longestCommonPrefix(["reflower", "flow", "flight"]));
+
+      console.log(isValid("(]"));
     </script>
   </body>
 </html>
