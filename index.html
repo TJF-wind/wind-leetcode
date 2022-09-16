@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // function romanToInt(s) {
+      //   const mapTemp = {
+      //     I: 1,
+      //     V: 5,
+      //     X: 10,
+      //     L: 50,
+      //     C: 100,
+      //     D: 500,
+      //     M: 1000,
+      //   };
+
+      //   let res = 0;
+      //   let temp = s.split("");
+
+      //   let arrTemp = [];
+      //   for (var i = 0; i < temp.length; i++) {
+      //     arrTemp.push(mapTemp[`${temp[i]}`]);
+      //   }
+
+      //   let prenum = arrTemp[0];
+      //   for (let i = 1; i < arrTemp.length - 1; i++) {
+      //     if (prenum < arrTemp[i]) {
+      //       res -= prenum;
+      //     } else {
+      //       res += prenum;
+      //     }
+      //     prenum = arrTemp[i];
+      //   }
+
+      //   res += prenum;
+      //   return res;
+      // }
+
+      // romanToInt("III");
+
+      function longestCommonPrefix(strs) {
+        let temp = [];
+        for (let i = 0; i < strs.length; i++) {
+          for (let j = 1; j < strs[i].length + 1; j++) {
+            let tempstr = strs[i].slice(0, j);
+            console.log("tempstr---", tempstr);
+            let temArr = strs.filter((item) => item.slice(0, j).indexOf(tempstr) !== -1);
+            if (temArr.length === strs.length) {
+              temp.push(tempstr);
+            }
+            // console.log("temp--", temp);
+          }
+        }
+
+        temp.sort();
+        console.log("temp", temp);
+        return temp[temp.length - 1] ? temp.pop() : "";
+      }
+      console.log(longestCommonPrefix(["reflower", "flow", "flight"]));
+    </script>
+  </body>
+</html>
