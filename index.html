@@ -83,28 +83,69 @@
 
       // console.log(isValid("(]"));
 
-      function mergeTwoLists(list1, list2) {
-        let tempListNode = { next: null, val: 0 };
-        let tempnode = tempListNode;
+      // function mergeTwoLists(list1, list2) {
+      //   let tempListNode = { next: null, val: 0 };
+      //   let tempnode = tempListNode;
 
-        while (list2 && list1) {
-          if (list1?.val >= list2?.val) {
-            tempnode.next = list2;
-            list2 = list2.next;
-          } else {
-            tempnode.next = list1;
-            list1 = list1.next;
-          }
-          tempnode = tempnode.next;
-        }
+      //   while (list2 && list1) {
+      //     if (list1?.val >= list2?.val) {
+      //       tempnode.next = list2;
+      //       list2 = list2.next;
+      //     } else {
+      //       tempnode.next = list1;
+      //       list1 = list1.next;
+      //     }
+      //     tempnode = tempnode.next;
+      //   }
 
-        if (list1) tempnode.next = list1;
-        if (list2) tempnode.next = list2;
-        console.log(tempListNode, tempnode, tempListNode.next);
-        return tempListNode.next;
+      //   if (list1) tempnode.next = list1;
+      //   if (list2) tempnode.next = list2;
+      //   console.log(tempListNode, tempnode, tempListNode.next);
+      //   return tempListNode.next;
+      // }
+
+      // mergeTwoLists([1, 2, 4], [1, 3, 4]);
+
+      // function lengthOfLastWord(s) {
+      //   let splitArr = [];
+      //   for (let i = s.length - 1; i >= 0; i--) {
+      //     if (
+      //       (s[i] !== " " && s[i - 1] === " ") ||
+      //       (s[i] === " " && s[i - 1] !== " ") ||
+      //       (s[i] !== " " && !s[i - 1])
+      //     ) {
+      //       splitArr.push(i);
+      //     }
+      //   }
+
+      //   console.log("splitArr", splitArr);
+
+      //   if (s[s.length - 1] == " ") {
+      //     return splitArr[0] - splitArr[1];
+      //   } else {
+      //     return s.length - splitArr[0];
+      //   }
+      // }
+
+      // lengthOfLastWord("a");
+
+      function maxArea(height) {
+        //  silly v1
+        let arr = [];
+        height.map((item, index1) => {
+          height.forEach((item2, index2) => {
+            let width = Math.abs(index1 - index2);
+            let h = Math.min(item2, item);
+            let surface = width * h;
+            arr.push(surface);
+          });
+        });
+
+        console.log("arr", arr);
+        return arr.reduce((pre, cur) => (pre > cur ? pre : cur));
       }
 
-      mergeTwoLists([1, 2, 4], [1, 3, 4]);
+      maxArea([1, 8, 6, 2, 5, 4, 8, 3, 7]);
     </script>
   </body>
 </html>
