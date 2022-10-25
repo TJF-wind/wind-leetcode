@@ -1,6 +1,13 @@
 /*
  * @lc app=leetcode.cn id=2 lang=typescript
- *
+ * class ListNode {
+ *     val: number
+ *     next: ListNode | null
+ *     constructor(val?: number, next?: ListNode | null) {
+ *         this.val = (val===undefined ? 0 : val)
+ *         this.next = (next===undefined ? null : next)
+ *     }
+ * }
  * [2] 两数相加
  */
 

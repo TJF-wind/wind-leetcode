@@ -129,23 +129,52 @@
 
       // lengthOfLastWord("a");
 
-      function maxArea(height) {
-        //  silly v1
-        let arr = [];
-        height.map((item, index1) => {
-          height.forEach((item2, index2) => {
-            let width = Math.abs(index1 - index2);
-            let h = Math.min(item2, item);
-            let surface = width * h;
-            arr.push(surface);
-          });
-        });
+      // function maxArea(height) {
+      //   //  silly v1
+      //   let arr = [];
+      //   height.map((item, index1) => {
+      //     height.forEach((item2, index2) => {
+      //       let width = Math.abs(index1 - index2);
+      //       let h = Math.min(item2, item);
+      //       let surface = width * h;
+      //       arr.push(surface);
+      //     });
+      //   });
 
-        console.log("arr", arr);
-        return arr.reduce((pre, cur) => (pre > cur ? pre : cur));
+      //   console.log("arr", arr);
+      //   return arr.reduce((pre, cur) => (pre > cur ? pre : cur));
+      // }
+
+      // maxArea([1, 8, 6, 2, 5, 4, 8, 3, 7]);
+      function addBinary(a, b) {
+        let upSymbol = 0;
+        let resStr = "";
+        for (
+          let i = a.length - 1, j = b.length - 1;
+          i >= 0 || j >= 0;
+          i--, j--
+        ) {
+          let num1 = a[i] ?? 0;
+          let num2 = b[j] ?? 0;
+          let temp = Number(num1) + Number(num2) + upSymbol;
+
+          if (Number(temp) % 2) {
+            upSymbol = 0;
+            resStr = "1" + resStr;
+          } else {
+            resStr = "0" + resStr;
+            if (Number(temp)) {
+              upSymbol = 1;
+            } else {
+              upSymbol = 0;
+            }
+          }
+        }
+
+        return upSymbol === 0 ? resStr : "1" + resStr;
       }
 
-      maxArea([1, 8, 6, 2, 5, 4, 8, 3, 7]);
+      console.log(addBinary("1111", "1111"));
     </script>
   </body>
 </html>
