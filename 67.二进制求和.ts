@@ -29,31 +29,31 @@
 //   return upSymbol === 0 ? resStr : "1" + resStr;
 // }
 function addBinary(a: string, b: string): string {
-    const a1 = a.split('').reverse();
-    const b1 = b.split('').reverse();
-    let curry = 0;
-    const time = Math.max(a1.length, b1.length);
-    let result = [];
+  const a1 = a.split("").reverse();
+  const b1 = b.split("").reverse();
+  let curry = 0;
+  const time = Math.max(a1.length, b1.length);
+  let result = [];
 
-    if (a && b) {
-        for(let i = 0; i < time; i++) {
-            const num1 = a1[i] ? Number(a1[i]) : 0;
-            const num2 = b1[i] ? Number(b1[i]) : 0;
-            const sum = num1 + num2 + curry;
-            result[i] = sum % 2;
-            curry = sum > 1 ? 1 : 0;
-        }
-        if (curry) {
-            result[time + 1] = 1;
-        }
-    } else {
-        if (a) {
-            return a;
-        } else {
-            return b;
-        }
+  if (a && b) {
+    for (let i = 0; i < time; i++) {
+      const num1 = a1[i] ? Number(a1[i]) : 0;
+      const num2 = b1[i] ? Number(b1[i]) : 0;
+      const sum = num1 + num2 + curry;
+      result[i] = sum % 2;
+      curry = sum > 1 ? 1 : 0;
     }
+    if (curry) {
+      result[time + 1] = 1;
+    }
+  } else {
+    if (a) {
+      return a;
+    } else {
+      return b;
+    }
+  }
 
-    return result.reverse().join('');
-};
+  return result.reverse().join("");
+}
 // @lc code=end

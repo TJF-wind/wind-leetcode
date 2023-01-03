@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function isStraight(nums) {
+        // 选出普通牌,排成顺序
+        let temp = nums.sort((a, b) => a - b).filter((i) => i);
+        var res = 0; // 非连续 需要王牌的个数
+        for (let i = 0; i < temp.length - 1; i++) {
+          let a = temp[i + 1] - temp[i];
+          if (!a) return false;
+          res = res + a;
+        }
+
+        if (res == temp.length - 1) return true;
+
+        if (res > temp.length - 1) {
+          if (res - (temp.length - 1) <= nums.length - temp.length) {
+            return true;
+          }
+        }
+        return false;
+      }
+
+      console.log(isStraight([11, 8, 12, 8, 10]));
+    </script>
+  </body>
+</html>

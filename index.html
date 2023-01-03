@@ -8,173 +8,55 @@
   </head>
   <body>
     <script>
-      // function romanToInt(s) {
-      //   const mapTemp = {
-      //     I: 1,
-      //     V: 5,
-      //     X: 10,
-      //     L: 50,
-      //     C: 100,
-      //     D: 500,
-      //     M: 1000,
-      //   };
+      console.log("1");
 
-      //   let res = 0;
-      //   let temp = s.split("");
+      setTimeout(function () {
+        console.log("2");
+        process.nextTick(function () {
+          console.log("3");
+        });
+        new Promise(function (resolve) {
+          console.log("4");
+          resolve();
+        }).then(function () {
+          console.log("5");
+        });
+      });
 
-      //   let arrTemp = [];
-      //   for (var i = 0; i < temp.length; i++) {
-      //     arrTemp.push(mapTemp[`${temp[i]}`]);
-      //   }
-
-      //   let prenum = arrTemp[0];
-      //   for (let i = 1; i < arrTemp.length - 1; i++) {
-      //     if (prenum < arrTemp[i]) {
-      //       res -= prenum;
-      //     } else {
-      //       res += prenum;
-      //     }
-      //     prenum = arrTemp[i];
-      //   }
-
-      //   res += prenum;
-      //   return res;
-      // }
-
-      // romanToInt("III");
-
-      // function longestCommonPrefix(strs) {
-      //   let temp = [];
-      //   for (let i = 0; i < strs.length; i++) {
-      //     for (let j = 1; j < strs[i].length + 1; j++) {
-      //       let tempstr = strs[i].slice(0, j);
-      //       console.log("tempstr---", tempstr);
-      //       let temArr = strs.filter((item) => item.slice(0, j).indexOf(tempstr) !== -1);
-      //       if (temArr.length === strs.length) {
-      //         temp.push(tempstr);
-      //       }
-      //       // console.log("temp--", temp);
-      //     }
-      //   }
-
-      //   temp.sort();
-      //   console.log("temp", temp);
-      //   return temp[temp.length - 1] ? temp.pop() : "";
-      // }
-      // console.log(longestCommonPrefix(["reflower", "flow", "flight"]));
-
-      // function isValid(s) {
-      //   const reverseMap = {
-      //     "{": "}",
-      //     "(": ")",
-      //     "[": "]",
-      //   };
-      //   let strArr = s.split("");
-      //   let res = true;
-      //   let temp = ~~(strArr.length / 2);
-      //   for (let i = 0; i < temp; i++) {
-      //     console.log(reverseMap[strArr[i]], strArr[strArr.length - 1 - i]);
-      //     res=reverseMap[strArr[i]] === strArr[strArr.length - 1 - i]
-      //       ? res && true
-      //       : res && false;
-      //   }
-      //   return res;
-      // }
-
-      // console.log(isValid("(]"));
-
-      // function mergeTwoLists(list1, list2) {
-      //   let tempListNode = { next: null, val: 0 };
-      //   let tempnode = tempListNode;
-
-      //   while (list2 && list1) {
-      //     if (list1?.val >= list2?.val) {
-      //       tempnode.next = list2;
-      //       list2 = list2.next;
-      //     } else {
-      //       tempnode.next = list1;
-      //       list1 = list1.next;
-      //     }
-      //     tempnode = tempnode.next;
-      //   }
-
-      //   if (list1) tempnode.next = list1;
-      //   if (list2) tempnode.next = list2;
-      //   console.log(tempListNode, tempnode, tempListNode.next);
-      //   return tempListNode.next;
-      // }
-
-      // mergeTwoLists([1, 2, 4], [1, 3, 4]);
-
-      // function lengthOfLastWord(s) {
-      //   let splitArr = [];
-      //   for (let i = s.length - 1; i >= 0; i--) {
-      //     if (
-      //       (s[i] !== " " && s[i - 1] === " ") ||
-      //       (s[i] === " " && s[i - 1] !== " ") ||
-      //       (s[i] !== " " && !s[i - 1])
-      //     ) {
-      //       splitArr.push(i);
-      //     }
-      //   }
-
-      //   console.log("splitArr", splitArr);
-
-      //   if (s[s.length - 1] == " ") {
-      //     return splitArr[0] - splitArr[1];
-      //   } else {
-      //     return s.length - splitArr[0];
-      //   }
-      // }
-
-      // lengthOfLastWord("a");
-
-      // function maxArea(height) {
-      //   //  silly v1
-      //   let arr = [];
-      //   height.map((item, index1) => {
-      //     height.forEach((item2, index2) => {
-      //       let width = Math.abs(index1 - index2);
-      //       let h = Math.min(item2, item);
-      //       let surface = width * h;
-      //       arr.push(surface);
-      //     });
-      //   });
-
-      //   console.log("arr", arr);
-      //   return arr.reduce((pre, cur) => (pre > cur ? pre : cur));
-      // }
-
-      // maxArea([1, 8, 6, 2, 5, 4, 8, 3, 7]);
-      function addBinary(a, b) {
-        let upSymbol = 0;
-        let resStr = "";
-        for (
-          let i = a.length - 1, j = b.length - 1;
-          i >= 0 || j >= 0;
-          i--, j--
-        ) {
-          let num1 = a[i] ?? 0;
-          let num2 = b[j] ?? 0;
-          let temp = Number(num1) + Number(num2) + upSymbol;
-
-          if (Number(temp) % 2) {
-            upSymbol = 0;
-            resStr = "1" + resStr;
-          } else {
-            resStr = "0" + resStr;
-            if (Number(temp)) {
-              upSymbol = 1;
-            } else {
-              upSymbol = 0;
-            }
-          }
-        }
-
-        return upSymbol === 0 ? resStr : "1" + resStr;
+      process.nextTick(function () {
+        console.log("6");
+      });
+      
+      async function fn() {
+        await fn2();
+        console.log(13);
       }
 
-      console.log(addBinary("1111", "1111"));
+      function fn2() {
+        console.log(14);
+      }
+      fn();
+      new Promise(function (resolve) {
+        console.log("7");
+        resolve();
+      }).then(function () {
+        console.log("8");
+      });
+
+      setTimeout(function () {
+        console.log("9");
+        process.nextTick(function () {
+          console.log("10");
+        });
+        new Promise(function (resolve) {
+          console.log("11");
+          resolve();
+        }).then(function () {
+          console.log("12");
+        });
+      });
+
+     //  1 14 7 6 13 8 2 4 3 5 9 11 10 12
     </script>
   </body>
 </html>
